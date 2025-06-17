@@ -1,7 +1,7 @@
 const {mongoose, Schema} = require('mongoose');
-import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt"
-import { emit } from "../app";
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+
 
 const userSchema = new Schema(
         {
@@ -72,7 +72,7 @@ userSchema.methods.generateAccessToken= function(){
                 },
                 process.env.ACCESS_TOKEN_SECRET,
                 {
-                        expiresIn: ACCESS_TOKEN_EXPIRY
+                        expiresIn: process.env.ACCESS_TOKEN_EXPIRY
                 }
         )
 }
